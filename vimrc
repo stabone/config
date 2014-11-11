@@ -1,111 +1,92 @@
 
 
+http://vimawesome.com/
 
-"""""""""""""""""""""""""""""""""""""""""""
-" Files, backup and undo
-""""""""""""""""""""""""""""""""""""""""""
+"" General
+set number	" Show line numbers
+set linebreak	" Break lines at word (requires Wrap lines)
+set showbreak=+++	" Wrap-broken line prefix
+set textwidth=100	" Line wrap (number of cols)
+set showmatch	" Highlight matching brace
+set visualbell	" Use visual bell (no beeping)
 
-"" My vim configuration
-set number
-set mouse=a
+set hlsearch	" Highlight all search results
+set smartcase	" Enable smart-case search
+set ignorecase	" Always case-insensitive
+set incsearch	" Searches for strings incrementally
 
-"" tab configuration
-set shiftwidth=4
+set autoindent	" Auto-indent new lines
+set shiftwidth=4	" Number of auto-indent spaces
 set tabstop=4
-set expandtab " spaces instead of tabs
+set expandtab   " uses spaces instead of tabs
+set smartindent	" Enable smart-indent
+set smarttab	" Enable smart-tabs
+set softtabstop=4	" Number of spaces per Tab
 
-set ai " Auto indent
-set si " Smart indent
-set wrap " wrap lines
+set encoding=utf-8
 
+"# Advanced
+set ruler	" Show row and column ruler information
 
-"""""""""""""""""""""""""""""""""""""""""""
-" Files, backup and undo
-""""""""""""""""""""""""""""""""""""""""""
+set undolevels=1000	" Number of undo levels
+set backspace=indent,eol,start	" Backspace behaviour
 
-set nobackup
-set nowb
-set noswapfile
+" shows status line in all windows
+set laststatus=2
 
-
-""""""""""""""""""""""""""""""""""""""""""
-" VIM user interface
-""""""""""""""""""""""""""""""""""""""""""
-
-" Turn on the wild menu
-set wildmenu
-
-" Ignore comiled files
-set wildignore=*.o,*.so,*~,*.pyc
-
-" Show cursor position all the time
-set ruler
+"" shows spaces
+" set listchars=tab:»·,trail:·,eol:¶
+set listchars=trail:·,eol:¶
+set list
 
 
-"______________________________________
-" Options for search
-
-" Ignore case when searching
-set ignorecase
-
-" Smart case
-set smartcase
-
-" Highlight search results
-set hlsearch
-
-" Makes search act like search in modern browsers
-set incsearch
-
-" Don't redraw while executing macros
-set lazyredraw
-
-" Show matching brackets when text indicator is over brackets
-set showmatch
+"""""""""""""""""""""""""""
+" COLOR
+"""""""""""""""""""""""""""
+:set t_Co=256 " 256 colors
+color wombat256mod
+" :set background=dark
+" :color grb256
 
 
-
-""" Powerline
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+" pressing < or > will let you indent/unident selected lines
+vnoremap < <gv
+vnoremap > >gv
 
 
-""""""""""""""""""""""""""""""""""""""""""
-" Colors and Fonts
-""""""""""""""""""""""""""""""""""""""""""
+""" automativaly reload vimrc file
+autocmd! BufWritePost vimrc nested :source ~/.vimrc
 
-" Enable syntax highlignting
-syntax enable
 
-set encoding=utf8
+"" FUNCTION
+function! GetFileName()
+    echo @%
+endfunction
 
+function! GetFullPath()
+    echo expand('%:p')
+endfunction
+
+"" SHOWS trailing spaces
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+au InsertLeave * match ExtraWhitespace /\s\+$/
+
+" pathogen >> https://github.com/tpope/vim-pathogen
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
-set laststatus=2
-set noshowmode
 
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertLeave * match ExtraWhitespace /\s\+$/
-
-
-"" SOME EYE CANDY
-"   https://github.com/vim-scripts/colorschemer
-set t_Co=256
-color wombat256mod
-" https://github.com/morhetz/gruvbox
-" colorscheme gruvbox
+" http://vimawesome.com/?q=autocomple
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" " Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
 
 
-""" GIT gutter plugin
-"" https://github.com/airblade/vim-gitgutter
-"" treshold for diff
-let g:gitgutter_max_signs = 500  " default value
-
+"" GIT gutter options
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
-let g:gitgutter_highlight_lines = 1
 
 
