@@ -35,8 +35,7 @@ set backspace=indent,eol,start  " Backspace behaviour
 set laststatus=2
 
 "" shows spaces
-" set listchars=tab:»·,trail:·,eol:¶
-set listchars=trail:·,eol:¶
+set listchars=tab:»\·,trail:·,eol:¶
 set list
 
 
