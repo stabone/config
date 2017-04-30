@@ -3,7 +3,6 @@ call plug#begin('~/.vim/plugged')
 
   " Make sure you use single quotes
   Plug 'junegunn/vim-easy-align'
-  Plug 'tpope/vim-fugitive'
   Plug 'scrooloose/nerdtree'
   Plug 'jistr/vim-nerdtree-tabs'
   Plug 'majutsushi/tagbar'
@@ -12,13 +11,13 @@ call plug#begin('~/.vim/plugged')
   Plug 'bronson/vim-trailing-whitespace'
   Plug 'kien/ctrlp.vim'
   Plug 'kien/rainbow_parentheses.vim'
-  Plug 'octol/vim-cpp-enhanced-highlight'
+  "Plug 'octol/vim-cpp-enhanced-highlight'
   Plug 'morhetz/gruvbox'
   Plug 'pangloss/vim-javascript'
-  Plug 'tpope/vim-rails'
+  "Plug 'tpope/vim-rails'
   Plug 'tpope/vim-fugitive'
   Plug 'bling/vim-airline'
-  Plug 'vim-ruby/vim-ruby'
+  "Plug 'vim-ruby/vim-ruby'
 
 call plug#end()
 
@@ -39,9 +38,9 @@ set showbreak=~~    " Wrap-broken line prefix
 set smartcase       " Enable smart-case search
 set smartindent     " Enable smart-indent
 set smarttab        " Enable smart-tabs
-set shiftwidth=2    " Number of auto-indent spaces
-set softtabstop=2   " Number of spaces per Tab
-set tabstop=2
+set shiftwidth=4    " Number of auto-indent spaces
+set softtabstop=4   " Number of spaces per Tab
+set tabstop=4
 set textwidth=100   " Line wrap (number of cols)
 set visualbell      " Use visual bell (no beeping)
 set mouse=a
